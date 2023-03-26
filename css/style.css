@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap');
+
+.banner {
+    height: 550px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.banner-primario {
+    background-image: url(../img/slide1.jpg);
+
+}
+
+.banner-secundario {
+    background-image: url(../img/slide2.jpg);
+
+}
+
+.banner-piloto {
+    background-image: url(../img/slide3.jpg);
+
+}
+
+.myButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Estilo dos botões quando o mouse estiver em cima */
+.myButton:hover {
+    background-color: #3e8e41;
+}
+
+/* Estilo dos botões quando estiverem pressionados */
+.myButton:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.myButtonError {
+    background-color: #e40a0a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 30px;
+}
+
+/* Estilo dos botões quando o mouse estiver em cima */
+.myButtonError:hover {
+    background-color: #c24b4b;
+}
+
+/* Estilo dos botões quando estiverem pressionados */
+.myButtonError:active {
+    background-color: #c24b4b;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.toast-container {
+    top: 55px;
+    right: 20px;
+}
+
+.myQuestion {
+    background-color: #170c75;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Estilo dos botões quando o mouse estiver em cima */
+.myQuestion:hover {
+    background-color: #151041;
+}
+
+/* Estilo dos botões quando estiverem pressionados */
+.myQuestion:active {
+    background-color: #151041;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.dialog {
+    border: none;
+    display: none;
+    width: 600px;
+    margin-top: -300px;
+    border-radius: .5rem;
+    box-shadow: #000000;
+
+}
+
+dialog::backdrop {
+    background-color: #000000;
+    opacity: 0.5;
+}
