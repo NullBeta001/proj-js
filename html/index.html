@@ -100,6 +100,8 @@
                     <button class="myButton" onclick="closeDialog(4)">OK</button>
                 </dialog>
             </div>
+
+            <!-- Botões para gerar a ação -->
             <div style="display: flex; justify-content: flex-end; margin-right: 50px; bottom: 20px; right: 20px;">
                 <button class="myButton"
                     onclick="mostrarToast('success', 'Sucesso!', 'Operação realizada com sucesso.')">Sucesso</button>
@@ -215,9 +217,9 @@
             margin-top: -300px;
             border-radius: .5rem;
             box-shadow: #000000;
-            
+
         }
-        
+
         dialog::backdrop {
             background-color: #000000;
             opacity: 0.5;
@@ -304,39 +306,38 @@
             }
         });
 
+
         let dialog = '';
+        let dialogAtivo = '';
 
         function openDialog(param) {
-            if (dialog != '') {
-                let idx = dialog.substring(dialog.length - 1);
-                closeDialog(idx)
-            }
-            if (param == 1) {
-                dialog = 'dialog1';
-            } else if (param == 2) {
-                dialog = 'dialog2';
-            } else if (param == 3) {
-                dialog = 'dialog3';
+            if (dialogAtivo) {
+                mostrarToast('error', 'Erro!', 'Feche o dialog ativo para ir para outra questão!')
             } else {
-                dialog = 'dialog4';
+                const dlg = `dialog${param}`;
+    
+                dialogAtivo = dlg;
+                const dialogElement = document.getElementById(dlg);
+                if (dialogElement) {
+                    dialogElement.style.display = 'block';
+                } else {
+                    console.error(`Elemento com ID "${dlg}" não encontrado!`);
+                }
             }
-
-            document.getElementById(dialog).style.display = "block";
         }
 
-
         function closeDialog(param) {
-            let dlg = '';
-            if (param == 1) {
-                dlg = 'dialog1';
-            } else if (param == 2) {
-                dlg = 'dialog2';
-            } else if (param == 3) {
-                dlg = 'dialog3';
+            const dlg = `dialog${param}`;
+            const dialogElement = document.getElementById(dlg);
+            if (dialogElement) {
+                if (dlg === dialogAtivo) {
+                    dialogAtivo = '';
+                    dialogElement.style.display = 'none';
+                    mostrarToast('success', 'Sucesso!', `Leitura da ${param}ª questão concluída!`);
+                }
             } else {
-                dlg = 'dialog4';
+                console.error(`Elemento com ID "${dlg}" não encontrado!`);
             }
-            document.getElementById(dlg).style.display = "none";
         }
 
     </script>

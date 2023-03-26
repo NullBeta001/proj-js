@@ -72,36 +72,40 @@ $(document).ready(function() {
 });
 
 let dialog = '';
+let dialogAtivo = '';
 
 function openDialog(param) {
-    if(dialog != '') {
-        let idx = dialog.substring(dialog.length - 1);
-        closeDialog(idx)
+    // Verifique se já existe um diálogo aberto e feche-o se necessário
+    if (dialogAtivo) {
+      const idx = dialogAtivo.substring(dialogAtivo.length - 1);
+      closeDialog(idx);
     }
-    if(param == 1){
-        dialog = 'dialog1';
-    }else if (param == 2) {
-        dialog = 'dialog2';
-    }else if (param == 3) {
-        dialog = 'dialog3';
-    }else{
-        dialog = 'dialog4';
-    }
-
-    document.getElementById(dialog).style.display = "block";
-  }
   
+    // Crie o ID do diálogo usando um template string
+    const dlg = `dialog${param}`;
+  
+    // Exiba o diálogo atual
+    dialogAtivo = dlg;
+    const dialogElement = document.getElementById(dlg);
+    if (dialogElement) {
+      dialogElement.style.display = 'block';
+    } else {
+      console.error(`Elemento com ID "${dlg}" não encontrado!`);
+    }
+  }
   
   function closeDialog(param) {
-    let dlg = '';
-    if(param == 1){
-        dlg = 'dialog1';
-    }else if (param == 2) {
-        dlg = 'dialog2';
-    }else if (param == 3) {
-        dlg = 'dialog3';
-    }else{
-        dlg = 'dialog4';
+    const dlg = `dialog${param}`;
+    const dialogElement = document.getElementById(dlg);
+    if (dialogElement) {
+      if (dlg === dialogAtivo) {
+        dialogAtivo = '';
+        dialogElement.style.display = 'none';
+        mostrarToast('success', 'Sucesso!', `Leitura da ${param}ª questão concluída!`);
+      }
+    } else {
+      console.error(`Elemento com ID "${dlg}" não encontrado!`);
     }
-    document.getElementById(dlg).style.display = "none";
   }
+  
+
