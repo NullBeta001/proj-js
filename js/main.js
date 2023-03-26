@@ -38,7 +38,7 @@ function mostrarToast(tipo, titulo, mensagem) {
     setTimeout(function() {
         var toastElemento = bootstrap.Toast.getOrCreateInstance(toast);
         toastElemento.hide();
-    }, 3000);
+    }, 2000);
 
 };
 
